@@ -1,9 +1,3 @@
 [submodule "flaskbb"]
 	path = flaskbb
 	url = https://github.com/sh4nks/flaskbb
-[submodule "plugins/flaskbb-plugin-proxyfix"]
-	path = plugins/flaskbb-plugin-proxyfix
-	url = https://github.com/haliphax/flaskbb-plugin-proxyfix
-[submodule "plugins/flaskbb-plugin-private-memberlist"]
-	path = plugins/flaskbb-plugin-private-memberlist
-	url = https://github.com/haliphax/flaskbb-plugin-private-memberlist
