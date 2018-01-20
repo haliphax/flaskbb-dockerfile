@@ -17,6 +17,28 @@ other redis image).
 - `/app/config` - Should contain your `flaskbb.cfg` file
 - `/app/data` - Should contain your `flaskbb.sqlite` file
 - `/app/flaskbb/flaskbb/themes` - *(Optional)* Use this to override the FlaskBB `themes` directory
+- `/app/flaskbb/flaskbb/static/emoji` - *(Optional)* Downloaded emojis
+
+## Download emojis
+
+To download emojis to use in your FlaskBB instance, you need to run the
+`flaskbb download-emojis` command from a container with the `emoji` volume
+mounted to your host system. FlaskBB must be restarted after the emoji have
+been downloaded.
+
+### With a running container
+
+    docker exec -ti <container name> /bin/ash -c "flaskbb --config config/flaskbb.cfg download-emojis"
+
+### With a fresh container
+
+````
+docker run -ti --rm \
+	-v $(pwd)/data:/app/data -v $(pwd)/config:/app/config \
+	-v $(pwd)/emoji:/app/flaskbb/flaskbb/static/emoji \
+	haliphax/flaskbb:latest \
+	/bin/ash -c "flaskbb --config config/flaskbb.cfg download-emojis"
+````
 
 ## Image
 

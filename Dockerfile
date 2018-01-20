@@ -1,7 +1,7 @@
 FROM python:2.7-alpine
 MAINTAINER haliphax
 EXPOSE 5000
-VOLUME /app/data /app/config /app/flaskbb/flaskbb/themes
+VOLUME /app/data /app/config /app/flaskbb/flaskbb/themes /app/flaskbb/flaskbb/static/emoji
 WORKDIR /app
 ADD ./flaskbb /app/flaskbb
 RUN /bin/ash -c " \
