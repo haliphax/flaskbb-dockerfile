@@ -23,7 +23,7 @@ other redis image).
 
 To download emojis to use in your FlaskBB instance, you need to run the
 `flaskbb download-emojis` command from a container with the `emoji` volume
-mounted to your host system. FlaskBB must be restarted after the emoji have
+mounted to your host system. FlaskBB must be restarted after the emojis have
 been downloaded.
 
 ### With a running container
