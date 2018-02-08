@@ -8,6 +8,10 @@ docker-compose application along with a
 [redis:alpine](https://hub.docker.com/r/library/redis/tags/alpine/) image (or
 other redis image).
 
+For an example configuration, see the
+[haliphax/flaskbb-docker-compose-example](https://github.com/haliphax/flaskbb-docker-compose-example)
+project.
+
 ## Ports
 
 - 5000 - This is the port the gunicorn HTTP server listens on
@@ -28,7 +32,7 @@ been downloaded.
 
 ### With a running container
 
-    docker exec -ti <container name> /bin/ash -c "flaskbb --config config/flaskbb.cfg download-emojis"
+	docker exec -ti <container name> /bin/ash -c "flaskbb --config config/flaskbb.cfg download-emojis"
 
 ### With a fresh container
 
