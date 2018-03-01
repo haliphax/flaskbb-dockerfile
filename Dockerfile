@@ -1,7 +1,7 @@
 FROM python:2.7-alpine
 MAINTAINER haliphax
 EXPOSE 5000
-VOLUME /app/data /app/config /app/flaskbb/flaskbb/themes /app/flaskbb/flaskbb/static/emoji
+VOLUME /app/data /app/config /app/flaskbb/flaskbb/themes /usr/local/lib/python2.7/site-packages/flaskbb/static/emoji
 WORKDIR /app
 ADD ./flaskbb /app/flaskbb
 RUN /bin/ash -c " \
@@ -11,8 +11,9 @@ RUN /bin/ash -c " \
 	&& apk del gcc musl-dev zlib-dev jpeg-dev \
 	&& flaskbb translations compile \
 	"
+ADD ./wsgi.py /app/
 CMD /bin/ash -c " \
 	pip install -U --no-deps ./flaskbb; \
 	flaskbb --config config/flaskbb.cfg celery worker \
-		& flaskbb --config config/flaskbb.cfg server start --host 0.0.0.0 --port 5000 \
+		& gunicorn -w 4 -b 0.0.0.0:5000 wsgi:flaskbb \
 	"
