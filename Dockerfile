@@ -14,6 +14,5 @@ RUN /bin/ash -c " \
 ADD ./wsgi.py /app/
 CMD /bin/ash -c " \
 	pip install -U --no-deps ./flaskbb; \
-	flaskbb --config config/flaskbb.cfg celery worker \
-		& gunicorn -w 4 -b 0.0.0.0:5000 wsgi:flaskbb \
+	gunicorn -w 4 -b 0.0.0.0:5000 wsgi:flaskbb \
 	"
